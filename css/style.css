@@ -9,16 +9,41 @@ header{
 }
 
 .content{
+    display: flex;
     margin-top: 2%;
+}
+
+.rightCon .box{
+    border:1px solid #3b71a6;
+    background: #0a152e;
+    position:relative;
+    height:230px;
+}
+
+.rightCon .box .boxTitle{
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    background: -moz-linear-gradient(left,#13224f 20%, #0a152f 100%);
+    background: -webkit-linear-gradient(left,#13224f 20%#0a152f 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #13224f 20%,#0a152f 100%); 
+    padding:0 1%;
+}
+
+.echartBox{
+    position: absolute;
+    top:8px;
+    z-index: 999;
 }
 
 
 .content .leftCon{
-    width: 75%;
+    width: 70%;
     border:1px solid #396d9f;
     margin-right: 1%;
 }
 
 .content .rightCon{
-    width: 24%;
+    width: 29%;
 }
+
