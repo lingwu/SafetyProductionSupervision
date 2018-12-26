@@ -284,3 +284,7 @@ header form .inputTxt::placeholder{
     display: inline-block;
 }
 
+.leftCon #allmap{
+    height:100%;
+}
+
