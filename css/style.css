@@ -6,6 +6,148 @@ body{
 header{
     display: flex;
     position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header form{
+    display: flex;
+    position: relative;
+    width: 20%;
+    background: #00070f;
+}
+
+header form .inputTxt{
+    width: 100%;
+    height: 36px;
+    background: #0c1836;
+    border:0px;
+    border-top:1px solid #3f75af;
+    border-bottom:1px solid #3f75af;
+    color: #fff;
+}
+
+.line{
+    height: 1px;
+    width: 20%;
+    background: #509ae1;
+    position: absolute;
+    z-index: -20;
+}
+
+.line.first{
+    transform:scaleX(1.16);
+    left: 10%;
+}
+
+.line.second{
+    transform:scaleX(1.16);
+    left: 70%;
+}
+
+header .title{
+    width: 40%;
+}
+
+header form .inputTxt::placeholder{
+    color: #fff;
+    text-align: center;
+}
+
+.inputBtn{
+    background:url(../img/inputBtn.png) 0 0 no-repeat;
+    border:0px;
+    position: absolute;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    top:15px;
+}
+
+.arrowLeft{
+    width: 10px;
+    height: 40px;
+    background: #00070f url(../img/arrowLeft.png) 0 0 no-repeat;
+}
+
+.arrowRight{
+    width: 9px;
+    height: 40px;
+    background: #00070f url(../img/arrowRight.png) 0 0 no-repeat;
+}
+
+.rightBtn{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.btnBox{
+    display: flex;
+    position: relative;
+    width: 45%;
+}
+
+.btnBox .dropDown{
+    width: 85%;
+    height: 38px;
+    line-height: 38px;
+    border-top:1px solid #3f75af;
+    border-bottom:1px solid #3f75af;
+    text-align: center;
+    color: #fff;
+    background: #0c1836;
+}
+
+.btnBox span {
+    cursor: pointer;
+}
+
+.btnBox span i{
+    margin-left: 5px;
+    vertical-align:2px;
+}
+
+.btnBox.back span i{
+    display: inline-block;
+    width: 10px;
+    height: 7px;
+    background: url(../img/back.png) 0 no-repeat;
+}
+
+.btnBox.admin span i{
+    display: inline-block;
+    width: 8px;
+    height: 4px;
+    background: url(../img/arrowBottom.png) 0 no-repeat;
+}
+
+.dropDown ul{
+    width: 85%;
+    position: absolute;
+    top:40px;
+    z-index: 99999;
+    display: none;
+}
+
+.btnBox .dropDown ul li{
+    border:1px solid #3c6fa5;
+    border-top:0px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0;
+}
+
+.btnBox .dropDown ul li a{
+    background: #0a152e;
+    width: 100%;
+    display:block;
+    color: #fff;
+}
+.btnBox .dropDown ul li a:hover{
+    background: #17285d;
 }
 
 .content{
@@ -25,9 +167,11 @@ header{
     height: 40px;
     line-height: 40px;
     background: -moz-linear-gradient(left,#13224f 20%, #0a152f 100%);
-    background: -webkit-linear-gradient(left,#13224f 20%#0a152f 100%); /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-linear-gradient(left,#13224f 20%#0a152f 100%); 
     background: linear-gradient(to right, #13224f 20%,#0a152f 100%); 
     padding:0 1%;
+    border-bottom:1px solid #ccc;
+    border-image: linear-gradient(to right,#3e76b0,#0a1530) 10 10;
 }
 
 .echartBox{
@@ -38,12 +182,105 @@ header{
 
 
 .content .leftCon{
-    width: 70%;
+    width: 65%;
     border:1px solid #396d9f;
     margin-right: 1%;
 }
 
 .content .rightCon{
-    width: 29%;
+    width: 34%;
+}
+
+.echartBox{
+    width:100%;
+    height:200px;
+    background:transparent;
+}
+
+.equipmentNum{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.warning.box{
+    height: auto;
+    min-height: 200px;
+}
+
+.warning .boxTitle{
+    font-size: 16px;
+    display: flex;
+}
+
+.warningBtn{
+    margin-left: 8%;
+    font-size: 12px;
+}
+
+.warningBtn a{
+    margin: 0 5px;
+    border:1px solid #ccc;
+    border-image: linear-gradient(to right,#535c75,#0c1836) 10 10;
+    padding: 2px 10px;
+}
+
+.warningBtn a.current{
+    background: #2e446d;
+}
+
+.warningBtn .all{
+    color: #9ed3ff;
+}
+
+.warningBtn .error,table .error td:first-child{
+    color: #ff2300;
+}
+
+
+.warningBtn .warn,table .warn td:first-child{
+    color: #ffb300;
+}
+
+.warning table{
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+}
+
+.warning table tr td:first-child{
+    background: url(../img/dot.png) 8px center no-repeat;
+}
+
+.warning table tr td:last-child{
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+
+.warning table thead{
+    height: 30px;
+    line-height: 30px;
+    border-bottom:1px solid  #3b72ac;
+}
+
+.warning table th{
+    color: #9ed3ff;
+}
+
+.warning table td{
+    text-align: center;
+    line-height: 30px;
+    padding-right: 5px;
+}
+
+.warning table td i{
+    text-indent: -99999px;
+    vertical-align: -12px;
+    margin-right: 5px;
+    background:#9ed3ff;
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+    display: inline-block;
 }
 

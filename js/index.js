@@ -1,9 +1,15 @@
 $(document).ready(function(){
-    // 折线
-    var myChart = echarts.init(document.getElementById('111')); 
+    // 上报隐患数
+    var myChart = echarts.init(document.getElementById('dangersReported')); 
     var option = {
+        color:['#06b1df','#ff2300','#00e746','#ffb300'],
         title: {
-            text: '上报隐患数'
+            text: '上报隐患数',
+            textStyle:{
+                fontSize: 16,
+                fontWeight: 'normal',
+                color: '#fff'
+            }
         },
      
             tooltip : {
@@ -12,14 +18,18 @@ $(document).ready(function(){
             legend: {
                 itemWidth:10,
                 itemHeight:12,
-                data:['排查数','隐患数','已整改','待整改']
+                data:['排查数','隐患数','已整改','待整改'],
+                x:'right',
+                textStyle:{
+                    color:"#fff"
+                }
             },
-          
             calculable : true,
             grid:{
                 x:45,
                 x2:30,
-                y2:20
+                y2:20,
+                borderWidth:0
             },
             xAxis : [
                 {
@@ -38,7 +48,6 @@ $(document).ready(function(){
                 {
                     type : 'value',
                     splitLine:false,
-                    data : ['0','200','400','600','800'],
                     axisLabel:{
                         textStyle:{
                         color:'#fff'
@@ -51,83 +60,119 @@ $(document).ready(function(){
                     name:'排查数',
                     type:'line',
                     stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
+                    data:[120, 132, 101, 134, 90, 230],
+                    symbolSize: 2,
+                    symbol: 'circle'
                 },
                 {
                     name:'隐患数',
                     type:'line',
                     stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
+                    data:[220, 182, 191, 234, 290, 330],
+                    symbolSize: 2,
+                    symbol: 'circle'
                 },
                 {
                     name:'已整改',
                     type:'line',
                     stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
+                    data:[150, 232, 201, 154, 190, 330],
+                    symbolSize: 2,
+                    symbol: 'circle'
                 },
                 {
                     name:'待整改',
                     type:'line',
                     stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
+                    data:[0, 332, 301, 334, 390, 330],
+                    symbolSize: 2,
+                    symbol: 'circle'
                 }
             ]
         };   
         myChart.setOption(option); 
-        var myChart2 = echarts.init(document.getElementById('222')); 
-    var option = {
+
+        // 企业用电设备数
+        var myChart2 = echarts.init(document.getElementById('equipmentNum')); 
+        var option = {
+            color:['#06b1df'],
+            title : {
+                text: '企业用电设备数',
+                textStyle:{
+                    fontSize: 16,
+                    fontWeight: 'normal',
+                    color: '#fff'
+                }
+            },
             tooltip : {
                 trigger: 'axis'
             },
-            legend: {
-                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-            },
-           
             calculable : true,
+            grid:{
+                x:45,
+                x2:30,
+                y2:20,
+                borderWidth:0
+            },
             xAxis : [
                 {
+                    splitLine:false,
                     type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
-                }
+                    data : ['xxx公司','xxx公司','xxx公司','xxx公司','xxx公司','xxx公司','xxx公司','xxx公司'],
+                    axisLabel:{
+                        textStyle:{
+                        color:'#fff'
+                        }
+                    }
+                },
+            
             ],
             yAxis : [
                 {
-                    type : 'value'
+                    splitLine:false,
+                    type : 'value',
+                    axisLabel:{
+                        textStyle:{
+                        color:'#fff'
+                        }
+                    }
                 }
             ],
             series : [
                 {
-                    name:'邮件营销',
-                    type:'line',
-                    stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'联盟广告',
-                    type:'line',
-                    stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'视频广告',
-                    type:'line',
-                    stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'直接访问',
-                    type:'line',
-                    stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'搜索引擎',
-                    type:'line',
-                    stack: '总量',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    name:'降水量',
+                    type:'bar',
+                    data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
                 }
             ]
-        };   
-        myChart2.setOption(option); 
+        };
+       myChart2.setOption(option); 
+
+    //重大危险源预警按钮
+    $(".warningBtn .warn").click(function(){
+        $('.warningBtn').children().removeClass('current');
+        $(this).addClass('current');
+        $('table tr').filter('.warn').show();
+        $('table tr').filter('.error').hide();
+    });
+
+    $(".warningBtn .error").click(function(){
+        $('.warningBtn').children().removeClass('current');
+        $(this).addClass('current');
+        $('table tr').filter('.warn').hide();
+        $('table tr').filter('.error').show();
+    });
+
+    $(".warningBtn .all").click(function(){
+        $('.warningBtn').children().removeClass('current');
+        $(this).addClass('current');
+        $('table tr').filter('.warn').show();
+        $('table tr').filter('.error').show();
+    });
+
+    // 菜单下拉
+    $('.dropDown span').click(function(){
+        $('.dropDown ul').hide();
+        $(this).next('ul').show()
     })
+})

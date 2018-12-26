@@ -11,13 +11,60 @@
 <body>
     <header>
         <form action="">
-            <input type="text">
-            <input type="submit">
+            <div class='arrowLeft'></div>
+            <input type="text" class='inputTxt' placeholder="请输入企业名称">
+            <input type="submit" class='inputBtn'>
+            <div class='arrowRight'></div>
         </form>
-        <img src="../img/title.png" alt="">
-        <a href="">返回上一层</a>
-        <a href="">系统管理员</a>
-        <hr>
+        <div class="line first"></div>
+        <img src="../img/title.png" class='title' alt="">
+        <div class="line second"></div>
+        <div class='rightBtn'>
+            <div class='btnBox admin'> 
+                <div class='arrowLeft'></div>
+                <div class='dropDown'>
+                    <span>管理菜单<i></i></span>
+                    <ul>
+                        <li>
+                            <a href="">一企一档</a>
+                        </li>
+                         <li>
+                            <a href="">一企一档</a>
+                        </li>
+                        <li>
+                            <a href="">一企一档</a>
+                        </li>
+                            <li>
+                            <a href="">一企一档</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class='arrowRight'></div>
+            </div>
+            <!-- <div class="line"></div> -->
+            <div class='btnBox admin'> 
+                <div class='arrowLeft'></div>
+                <div class='dropDown'>
+                        <span>系统管理员<i></i></span>
+                        <ul>
+                            <li>
+                                <a href="">一企一档</a>
+                            </li>
+                             <li>
+                                <a href="">一企一档</a>
+                            </li>
+                            <li>
+                                <a href="">一企一档</a>
+                            </li>
+                                <li>
+                                <a href="">一企一档</a>
+                            </li>
+                        </ul>
+                    </div>
+                <div class='arrowRight'></div>
+            </div>
+        </div>
+        <!-- <div class="line"></div> -->
     </header>
     <div class='content'>
         <div class='leftCon'>
@@ -26,12 +73,59 @@
         <div class="rightCon">
             <div class='box'>
                 <div class='boxTitle'></div>
-                <div class='echartBox' id='111' style='width:100%;height:200px;background:transparent;'></div>
+                <div class='echartBox' id='dangersReported'></div>
             </div>
-
-           
-            <div id='222' style='width:100%;height:200px'>
-
+            <div class='box equipmentNum'>
+                <div class='boxTitle'></div>
+                <div class='echartBox' id='equipmentNum'></div>
+            </div>
+            <div class='box warning'>
+                <div class='boxTitle'>
+                    <span>重大危险源预警</span>
+                    <div class='warningBtn'>
+                        <a href="javascript:void(0)" class='current all'>全部检测</a>
+                        <a href="javascript:void(0)" class='warn'>损坏（0）</a>
+                        <a href="javascript:void(0)" class='error'>报警（0）</a>
+                    </div>
+                </div>
+                <table>
+                    <col width='15%' />
+                    <col width='85%' />
+                  <thead>
+                    <th>监测值</th>
+                    <th>检测点</th>
+                  </thead>
+                  <tbody>   
+                      <tr class='error'>
+                          <td>-1.57</td>
+                          <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                      </tr>
+                      <tr class='warn'>
+                            <td>50</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                        <tr class='error'>
+                            <td>0</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                        <tr class='error'>
+                            <td>-1.57</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                        <tr class='warn'>
+                            <td>-1.57</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                        <tr class='error'>
+                            <td>-1.57</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                        <tr class='error'>
+                            <td>-1.57</td>
+                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
+                        </tr>
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
