@@ -65,36 +65,65 @@
         </div>
     </header>
     <div class='content'>
+        <!-- 左侧内容 -->
         <div class='leftCon'>
+            <!-- 地图 -->
             <div id='allmap'></div>
+            <!-- 底部地图标注 -->
             <div class="bottomTip">
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/jgqy.png" alt="">
                     监管企业
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/zdwx.png" alt="">
                     重大危险源
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/zdwz.png" alt="">
                     重大危险源预警
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/sgbj.png" alt="">
                     事故报警
                 </div>
             </div>
+            <!-- 左侧状态数量 -->
+            <div class='statuNum'>
+                <div class="statuBox safe">
+                    <p>监管企业</p>
+                    <span>1014</span>
+                </div>
+                <div class="statuBox danger">
+                    <p>危险源</p>
+                    <span>6510</span>
+                </div>
+                <div class="statuBox danger">
+                    <p>隐患数</p>
+                    <span>6510</span>
+                </div>
+                <div class="statuBox safe">
+                    <p>已整改</p>
+                    <span>6510</span>
+                </div>
+            </div>
+            <div class="mapCon">
+
+            </div>
         </div>
+        <!-- 右侧内容 -->
         <div class="rightCon">
+            <!-- 折线图 -->
             <div class='box'>
                 <div class='boxTitle'></div>
                 <div class='echartBox' id='dangersReported'></div>
             </div>
+            <!-- 柱状图 -->
             <div class='box equipmentNum'>
                 <div class='boxTitle'></div>
                 <div class='echartBox' id='equipmentNum'></div>
             </div>
+            <!-- 重大危险源预警 -->
             <div class='box warning'>
                 <div class='boxTitle'>
                     <span>重大危险源预警</span>
@@ -148,7 +177,9 @@
     <script src='../js/jquery-3.3.1.min.js'></script>
     <script src='../js/echarts-all.js'></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MtnvT2vHxyjXd846i1nOjyzl8eMHLqEi"></script>
-    <script type="text/javascript" src="http://developer.baidu.com/map/custom/stylelist.js"></script>
+    <script type="text/javascript" src="../js/styleList.js"></script>
+    <script type="text/javascript" src="../js/sj.js"></script>
+    <script type="text/javascript" src="../js/InfoBox_min.js"></script>
     <script src='../js/index.js'></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ $(document).ready(function(){
         title: {
             text: '上报隐患数',
             textStyle:{
-                fontSize: 16,
+                fontSize: 22,
                 fontWeight: 'normal',
                 color: '#fff'
             }
@@ -17,7 +17,7 @@ $(document).ready(function(){
             },
             legend: {
                 itemWidth:10,
-                itemHeight:12,
+                itemHeight:25,
                 data:['排查数','隐患数','已整改','待整改'],
                 x:'right',
                 textStyle:{
@@ -99,7 +99,7 @@ $(document).ready(function(){
             title : {
                 text: '企业用电设备数',
                 textStyle:{
-                    fontSize: 16,
+                    fontSize: 22,
                     fontWeight: 'normal',
                     color: '#fff'
                 }
@@ -176,307 +176,131 @@ $(document).ready(function(){
     });
 
     // 地图
-    	// 百度地图API功能
-	var map = new BMap.Map("allmap");    // 创建Map实例
-	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-	//添加地图类型控件
-	map.addControl(new BMap.MapTypeControl({
+    var map = new BMap.Map("allmap");    // 创建Map实例
+    var point = new BMap.Point(119.455835405,32.2044094436);
+	map.centerAndZoom(point, 11);  // 初始化地图,设置中心点坐标和地图级别
+	
+	map.addControl(new BMap.MapTypeControl({//添加地图类型控件
 		mapTypes:[
             BMAP_NORMAL_MAP
         ]}));	  
-	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+	map.setCurrentCity("镇江");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    var styleJson = [{
-        "featureType": "background",
-        "elementType": "geometry",
-        "stylers": {
-            "color": "#00070fff"
+   
+    // 定义最后一个弹框
+    window.lastInfoBox = null;
+
+    var status = 1;
+
+    switch(status){
+        case 1:
+            var myIcon = new BMap.Icon("../img/jgqy.png", new BMap.Size(41,60));
+            var opts = {
+                // width: 140, // 信息窗口宽度
+                // height: 160, // 信息窗口高度
+                // enableMessage: false //设置允许信息窗发送短息
+
+                boxStyle:{
+                    width: "280px",
+                    height: "195px"
+                }
+                ,enableAutoPan: true
+                ,align: INFOBOX_AT_TOP,
+                closeIconUrl:'icon/close.png',
+                closeIconMargin:'0px',
+                closeIconZIndex:1,
+                closeIconWidth:'15px'
+                };
+                // 随机向地图添加25个标注
+                var data = new Array();
+                for(var i = 0; i < result.length; i++) {
+                var data1 = new Array();
+                data1[0] = result[i].longitude;
+                data1[1] = result[i].latitude;
+                map.centerAndZoom(new BMap.Point(result[i].longitude, result[i].latitude), 12);
+                map.enableScrollWheelZoom(true);
+                var str = '<div class="mapCon" style="background:#ccc;">';
+                str += '<p>大气温度：' + result[i].temperature + '</p>';
+                str += '<p>大气压：' + result[i].pressure + '</p>';
+                str += '<p>风速：' + result[i].wind + '</p>';
+                str += '<p>风速：' + result[i].name + '</p>';
+                str += "</div>";
+                data1[2] = str;
+                data[i] = data1;
+                }
+                var data_info = data;
+                
+                // var infoBox = new BMapLib.InfoBox(map,str.join(""),{
+                //     boxStyle:{
+                //         background:"url('tipbox.gif') no-repeat center top"
+                //         ,width: "270px"
+                //         ,height: "300px"
+                //     }
+                //     ,closeIconMargin: "1px 1px 0 0"
+                //     ,enableAutoPan: true
+                //     ,align: INFOBOX_AT_TOP
+                // });
+
+                
+
+                
+                for(var i = 0; i < data_info.length; i++) {
+                var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]),{icon:myIcon}); // 创建标注
+                var content = data_info[i][2];
+                map.addOverlay(marker); // 将标注添加到地图中
+                
+
+                addClickHandler(content, marker);
+                }
+                
+                function addClickHandler(content, marker) {
+                    marker.addEventListener("click", function(e) {
+                    openInfo(content, e)
+                    });
+                }
+            
+                function openInfo(content, e) {
+                var p = e.target;
+                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                // var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
+               
+                var infoWindow = new BMapLib.InfoBox(map,content,opts)
+
+                if(lastInfoBox){
+                    //判断上一个窗体是否存在，若存在则执行close
+                        lastInfoBox.close();
+                    }
+                    lastInfoBox = infoWindow;
+                // map.openInfoWindow(infoWindow, point); //开启信息窗口
+                infoWindow.open(point);
+                }
+            break;
+        case 2:
+       
+            break;
+        case 3:
+       
+            break;
+         default:
+        // var pt = new BMap.Point(116.417, 39.909);
+        // var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+        // var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+        // map.addOverlay(marker2);   
+        // var opts = {
+        //     width : 200,     // 信息窗口宽度
+        //     height: 100,     // 信息窗口高度
+        //     title : "海底捞王府井店" , // 信息窗口标题
+        //     enableMessage:true,//设置允许信息窗发送短息
+        //     message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+        // }
+        // var infoWindow = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", opts);  // 创建信息窗口对象 
+        // marker2.addEventListener("click", function(){          
+        //     map.openInfoWindow(infoWindow,pt); //开启信息窗口
+        // }); 
+            break;
         }
-    }, {
-        "featureType": "road",
-        "elementType": "geometry.fill",
-        "stylers": {
-            "color": "#011b33ff"
-        }
-    }, {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": {
-            "color": "#001c37ff"
-        }
-    }, {
-        "featureType": "road",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#063259ff"
-        }
-    }, {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": {
-            "visibility": "on"
-        }
-    }, {
-        "featureType": "road",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "weight": 0,
-            "color": "#06325900"
-        }
-    }, {
-        "featureType": "districtlabel",
-        "elementType": "labels.icon",
-        "stylers": {
-            "visibility": "off"
-        }
-    }, {
-        "featureType": "railway",
-        "elementType": "geometry.fill",
-        "stylers": {
-            "color": "#010001ff"
-        }
-    }, {
-        "featureType": "railway",
-        "elementType": "geometry.stroke",
-        "stylers": {
-            "color": "#02101fff"
-        }
-    }, {
-        "featureType": "medicallabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#0f3d67ff"
-        }
-    }, {
-        "featureType": "airportlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "weight": 0
-        }
-    }, {
-        "featureType": "educationlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "weight": 0,
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "continent",
-        "elementType": "labels",
-        "stylers": {
-            "visibility": "on"
-        }
-    }, {
-        "featureType": "poilabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#063259ff"
-        }
-    }, {
-        "featureType": "poilabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "districtlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#063259ff"
-        }
-    }, {
-        "featureType": "districtlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "poilabel",
-        "elementType": "labels.icon",
-        "stylers": {
-            "visibility": "off"
-        }
-    }, {
-        "featureType": "medicallabel",
-        "elementType": "labels.icon",
-        "stylers": {
-            "visibility": "on"
-        }
-    }, {
-        "featureType": "highwaysign",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "highwaysign",
-        "elementType": "labels.icon",
-        "stylers": {
-            "visibility": "on"
-        }
-    }, {
-        "featureType": "highwaysign",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "scenicspotslabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "scenicspotslabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "educationlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "medicallabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "entertainmentlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "entertainmentlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "estatelabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "estatelabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "businesstowerlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "businesstowerlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "companylabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "companylabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "governmentlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "governmentlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "financelabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "financelabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "transportationlabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff0"
-        }
-    }, {
-        "featureType": "transportationlabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "carservicelabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "carservicelabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "lifeservicelabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "lifeservicelabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "shoppinglabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "shoppinglabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }, {
-        "featureType": "hotellabel",
-        "elementType": "labels.text.fill",
-        "stylers": {
-            "color": "#01182fff"
-        }
-    }, {
-        "featureType": "hotellabel",
-        "elementType": "labels.text.stroke",
-        "stylers": {
-            "color": "#ffffff00"
-        }
-    }]
-   map.setMapStyle({styleJson:styleJson});
+
+        // 加载地图样式
+        map.setMapStyle({styleJson:styleJson});
 
 })
