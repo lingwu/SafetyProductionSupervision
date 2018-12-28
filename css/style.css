@@ -373,4 +373,81 @@ header form .inputTxt::placeholder{
 /* 百度地图logo */
 .anchorBL{display:none;}
 
+/* 弹框 */
+
+
+.blueCon{
+    border:1px solid #3a6ca1;
+    background: url(../img/bottomTipBg.png) 0 0 repeat;
+    width: 252px;
+    min-height: 200px;
+}
+
+.mapCon{
+    margin-top: 15px;
+    border-bottom: 0px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px 15px 0 15px;
+}
+
+.mapConBottom{
+    position: absolute;
+    left:-1px;
+}
+
+.blueCon .mapConBottom{
+    background:url(../img/blue_tk_bottom.png) 0 bottom no-repeat;
+    width: 252px;
+    height: 31px;
+    bottom: -31px;
+}
+
+.mapConTxt p{
+    padding: 5px 0px;
+    border-bottom:1px solid #3b72ac;
+}
+
+.mapConTxt .tips{
+    display: inline-block;
+    background: #ffb300;
+    color: #00070f;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.mapConTxt .companyName{
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.mapConTxt .info{
+    color: #fff;
+}
+
+.mapConTxt .info span{
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.mapConTxt .infoBtn{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.mapConTxt .infoBtn li{
+    background: #06b1df;
+    flex:0 0 49%;
+    cursor: pointer;
+    text-align: center;
+    color: #00070f;
+    line-height: 34px;
+    height: 34px;
+    margin-bottom: 2%;
+}
+
 

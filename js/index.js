@@ -189,114 +189,100 @@ $(document).ready(function(){
    
     // 定义最后一个弹框
     window.lastInfoBox = null;
-
+    
     var status = 1;
-
+     // 向地图添加标注
     switch(status){
         case 1:
             var myIcon = new BMap.Icon("../img/jgqy.png", new BMap.Size(41,60));
             var opts = {
-                // width: 140, // 信息窗口宽度
-                // height: 160, // 信息窗口高度
-                // enableMessage: false //设置允许信息窗发送短息
-
                 boxStyle:{
-                    width: "280px",
-                    height: "195px"
+                    width: "252px"
                 }
+                ,offset: new BMap.Size(20, 45)
                 ,enableAutoPan: true
-                ,align: INFOBOX_AT_TOP,
-                closeIconUrl:'icon/close.png',
-                closeIconMargin:'0px',
+                ,align: INFOBOX_AT_TOP
+                ,closeIconMargin:'0px',
                 closeIconZIndex:1,
                 closeIconWidth:'15px'
                 };
-                // 随机向地图添加25个标注
+
+                // 向地图添加标注
                 var data = new Array();
                 for(var i = 0; i < result.length; i++) {
-                var data1 = new Array();
-                data1[0] = result[i].longitude;
-                data1[1] = result[i].latitude;
-                map.centerAndZoom(new BMap.Point(result[i].longitude, result[i].latitude), 12);
-                map.enableScrollWheelZoom(true);
-                var str = '<div class="mapCon" style="background:#ccc;">';
-                str += '<p>大气温度：' + result[i].temperature + '</p>';
-                str += '<p>大气压：' + result[i].pressure + '</p>';
-                str += '<p>风速：' + result[i].wind + '</p>';
-                str += '<p>风速：' + result[i].name + '</p>';
-                str += "</div>";
-                data1[2] = str;
-                data[i] = data1;
+                    var data1 = new Array();
+                    data1[0] = result[i].longitude;
+                    data1[1] = result[i].latitude;
+                    map.centerAndZoom(new BMap.Point(result[i].longitude, result[i].latitude), 12);
+                    map.enableScrollWheelZoom(true);
+                    var str =`
+                        <div class='mapTipBox'>
+                            <div class='mapCon blueCon'>
+                                <div class='mapConTxt'>
+                                    <p class='titleBox'>
+                                        <span class='tips'>${result[i].tips}</span> 
+                                    </p>
+                                    <p class='companyName'>
+                                    ${result[i].companyName}
+                                    </p>
+                                    <p class='info'>
+                                        <span>主要负责人：${result[i].headName}</span>
+                                        <span>联系电话：${result[i].phone}</span>
+                                    </p>
+                                    <ul class='infoBtn'>
+                                        <li class='entryExitInfo' onclick="entryExitInfo()" >
+                                            人员出入信息
+                                        </li>
+                                        <li class='dangerousInfo' onclick="dangerousInfo()">
+                                                <img src="../img/dangerArraw.png" alt="">危化品信息
+                                        </li>
+                                        <li class='hazardSource' onclick="hazardSource()">
+                                                危险源
+                                        </li>
+                                        <li class='troubleIdentify ' onclick="troubleIdentify()">
+                                                隐患排查
+                                        </li>
+                                </div>
+                                <div class='mapConBottom'></div>
+                            </div>
+                        </div>
+                        `
+                    data1[2] = str;
+                    data[i] = data1;
                 }
                 var data_info = data;
-                
-                // var infoBox = new BMapLib.InfoBox(map,str.join(""),{
-                //     boxStyle:{
-                //         background:"url('tipbox.gif') no-repeat center top"
-                //         ,width: "270px"
-                //         ,height: "300px"
-                //     }
-                //     ,closeIconMargin: "1px 1px 0 0"
-                //     ,enableAutoPan: true
-                //     ,align: INFOBOX_AT_TOP
-                // });
-
-                
-
-                
                 for(var i = 0; i < data_info.length; i++) {
-                var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]),{icon:myIcon}); // 创建标注
-                var content = data_info[i][2];
-                map.addOverlay(marker); // 将标注添加到地图中
-                
-
-                addClickHandler(content, marker);
+                    var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]),{icon:myIcon}); // 创建标注
+                    var content = data_info[i][2];
+                    map.addOverlay(marker); // 将标注添加到地图中
+                    addClickHandler(content, marker);
                 }
-                
                 function addClickHandler(content, marker) {
                     marker.addEventListener("click", function(e) {
                     openInfo(content, e)
                     });
                 }
-            
+
                 function openInfo(content, e) {
                 var p = e.target;
-                var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
-                // var infoWindow = new BMap.InfoWindow(content, opts); // 创建信息窗口对象 
-               
-                var infoWindow = new BMapLib.InfoBox(map,content,opts)
-
+                var point = new BMap.Point(p.getPosition().lng+0.010, p.getPosition().lat);
+                var infoWindow = new BMapLib.InfoBox(map,content,opts);// 创建信息窗口对象 
                 if(lastInfoBox){
-                    //判断上一个窗体是否存在，若存在则执行close
-                        lastInfoBox.close();
+                        lastInfoBox.close();//判断上一个窗体是否存在，若存在则执行close
                     }
                     lastInfoBox = infoWindow;
-                // map.openInfoWindow(infoWindow, point); //开启信息窗口
                 infoWindow.open(point);
                 }
+
+                function entryExitInfo(){
+                    alert(111);
+                    }
             break;
         case 2:
-       
             break;
         case 3:
-       
             break;
          default:
-        // var pt = new BMap.Point(116.417, 39.909);
-        // var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
-        // var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-        // map.addOverlay(marker2);   
-        // var opts = {
-        //     width : 200,     // 信息窗口宽度
-        //     height: 100,     // 信息窗口高度
-        //     title : "海底捞王府井店" , // 信息窗口标题
-        //     enableMessage:true,//设置允许信息窗发送短息
-        //     message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
-        // }
-        // var infoWindow = new BMap.InfoWindow("地址：北京市东城区王府井大街88号乐天银泰百货八层", opts);  // 创建信息窗口对象 
-        // marker2.addEventListener("click", function(){          
-        //     map.openInfoWindow(infoWindow,pt); //开启信息窗口
-        // }); 
             break;
         }
 
