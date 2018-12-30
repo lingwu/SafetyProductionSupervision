@@ -1,0 +1,306 @@
+[
+    {
+        "status":0,
+        "id":1,
+        "info":{
+            "longitude": "119.437102",
+            "latitude": "32.181272",
+            "tips":"危化品监管1",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "headName":"王小五",
+            "phone":"15812349876"
+        },
+        "entryExitInfo":{
+            "fk":1,
+            "lscbs":15,
+            "Novacap":1,
+            "cbs":16,
+            "zzs":30
+        },
+        "troubleIdentify":{
+            "pcs":1,
+            "yhs":2,
+            "yzg":45,
+            "dzg":12,
+            "zgl":5
+        },
+        "dangerousInfo":[
+            {
+                "whpname":"丁二烯1",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯2",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯3",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯4",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯5",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            }
+        ]
+
+    },
+    {
+        "status":0,
+        "id":2,
+        "info":{
+            "longitude": "119.382485",
+            "latitude": "32.1622",
+            "tips":"危化品监管2",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "headName":"王小五",
+            "phone":"15812349876"
+        },
+        "entryExitInfo":{
+            "fk":11,
+            "lscbs":1500,
+            "Novacap":111,
+            "cbs":146,
+            "zzs":300
+        },
+        "troubleIdentify":{
+            "pcs":11,
+            "yhs":22,
+            "yzg":415,
+            "dzg":122,
+            "zgl":123
+        },
+        "dangerousInfo":[
+            {
+                "whpname":"丁二烯1",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯2",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯3",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯4",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            },
+            {
+                "whpname":"丁二烯5",
+                "yt":"原料",
+                "ccfs":"储罐存储",
+                "ccdd":"丁二烯储罐",
+                "sfzdjgwhp":"是"
+            }
+        ]
+    },
+    {
+        "status":0,
+        "id":3,
+        "info":{
+            "longitude": "119.558984",
+            "latitude": "32.166112",
+            "tips":"危化品监管3",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "headName":"王小五",
+            "phone":"15812349876"
+        },
+        "entryExitInfo":{
+            "fk":111,
+            "lscbs":100,
+            "Novacap":1,
+            "cbs":146,
+            "zzs":300
+        },
+        "troubleIdentify":{
+            "pcs":31,
+            "yhs":432,
+            "yzg":45,
+            "dzg":2,
+            "zgl":0.1
+        }
+    },
+    {
+        "status":0,
+        "id":4,
+        "info":{
+            "longitude": "119.30832",
+            "latitude": "32.252632",
+            "tips":"危化品监管4",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "headName":"王小五",
+            "phone":"15812349876"
+        },
+        "entryExitInfo":{
+            "fk":21,
+            "lscbs":10,
+            "Novacap":31,
+            "cbs":16,
+            "zzs":3
+        },
+        "troubleIdentify":{
+            "pcs":17,
+            "yhs":21,
+            "yzg":65,
+            "dzg":120,
+            "zgl":12
+        }
+    },
+    {
+        "status":1,
+        "info":{
+            "longitude": "119.491718",
+            "latitude": "32.011931",
+            "tips":"危化品监管5",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    },
+    {
+        "status":1,
+        "info":{
+            "longitude": "119.695814",
+            "latitude": "32.072166",
+           "tips":"危化品监管6",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    },
+    {
+        "status":1,
+        "info":{
+            "longitude": "119.14102",
+            "latitude": "32.10545",
+            "tips":"危化品监管7",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    },
+    {
+        "status":2,
+        "info":{
+            "longitude": "119.52693",
+            "latitude": "32.205954",
+            "note":"车间北侧仓库发生火灾1",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "time":"2018-08-15  13:39",
+            "imgUrl":"../img/hz.jpg"
+        }
+    },
+    {
+        "status":2,
+        "info":{
+            "longitude": "119.292652",
+            "latitude": "32.005556",
+            "note":"车间北侧仓库发生火灾2",
+            "companyName":"江苏安一信息科技有有限公司",
+            "time":"2018-08-15  13:39",
+            "imgUrl":"../img/hz.jpg"
+        }
+    },
+    {
+        "status":2,
+        "info":{
+            "longitude": "119.056937",
+            "latitude": "31.961452",
+            "note":"车间北侧仓库发生火灾3",
+            "companyName":"江苏安一信息科技有限公",
+            "time":"2018-08-15  13:39",
+            "imgUrl":"../img/hz.jpg"
+        }
+    },
+    {
+        "status":2,
+        "info":{
+            "longitude": "118.587805",
+            "latitude": "31.993797",
+            "note":"车间北侧仓库发生火灾4",
+            "companyName":"江苏安一信息科技有限",
+            "time":"2018-08-15  13:39",
+            "imgUrl":"../img/hz.jpg"
+        }
+    },
+    {
+        "status":3,
+        "info":{
+            "longitude": "119.354743",
+            "latitude": "32.247373",
+            "tips":"重大危险源1",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    },
+    {
+        "status":3,
+        "info":{
+            "longitude": "119.509108",
+            "latitude": "32.24664",
+           "tips":"重大危险源2",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    },
+    {
+        "status":3,
+        "info":{
+            "longitude": "119.38895",
+            "latitude": "32.111927",
+            "tips":"重大危险源3",
+            "companyName":"江苏安一信息科技有限公司江苏安一信息科技有限公司",
+            "area":"对氯甲苯/邻氯甲苯储",
+            "item":"液位",
+            "monitoringMedium":"甲醇",
+            "detectionValue":"0.12"
+        }
+    }
+]
+
+
+

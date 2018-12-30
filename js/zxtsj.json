@@ -1,0 +1,49 @@
+[
+    {
+        "times":"2018-01",
+        "investigationNumber":"112",
+        "dangerNumber":"140",
+        "rectification":"14",
+        "Waiting":"23"
+    },
+    {
+        "times":"2018-02",
+        "investigationNumber":"2",
+        "dangerNumber":"120",
+        "rectification":"46",
+        "Waiting":"3"
+
+    },
+    {
+        "times":"2018-03",
+        "investigationNumber":"42",
+        "dangerNumber":"80",
+        "rectification":"67",
+        "Waiting":"73"
+
+    },
+    {
+        "times":"2018-04",
+        "investigationNumber":"120",
+        "dangerNumber":"110",
+        "rectification":"77",
+        "Waiting":"120"
+
+    },
+    {
+        "times":"2018-05",
+        "investigationNumber":"222",
+        "dangerNumber":"130",
+        "rectification":"41",
+        "Waiting":"203"
+
+    },
+    {
+        "times":"2018-06",
+        "investigationNumber":"78",
+        "dangerNumber":"100",
+        "rectification":"68",
+        "Waiting":"230"
+
+    }
+]

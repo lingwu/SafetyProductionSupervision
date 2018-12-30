@@ -5,7 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>镇江新区企业安全生产监控</title>
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+	<link href="../css/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+	<!-- END GLOBAL MANDATORY STYLES -->
+	
+	<!-- BEGIN PAGE LEVEL STYLES -->
+	<link rel="stylesheet" type="text/css" href="../css/assets/admin/pages/css/timeline.css"></link>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-select/bootstrap-select.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/select2/select2.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-datepicker/css/datepicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/jquery-multi-select/css/multi-select.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/jquery-tags-input/jquery.tagsinput.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/typeahead/typeahead.css"></link>
+	<link rel="stylesheet" type="text/css" href="../css/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"></link>
+	<link rel="stylesheet" type="text/css" href="/assets/admin/pages/css/pricing-table.css"/>
+	<!-- END PAGE LEVEL STYLES -->
+	<!-- BEGIN THEME STYLES -->
+	<link href="../css/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+	<link href="../css/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+	<link id="style_color" href="/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+	<!-- END THEME STYLES -->
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../js/layer/theme/default/layer.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -13,14 +48,14 @@
         <form action="">
             <div class='arrowLeft'></div>
             <input type="text" class='inputTxt' placeholder="请输入企业名称">
-            <input type="submit" class='inputBtn'>
+            <input type="submit" class='inputBtn' value=''>
             <div class='arrowRight'></div>
         </form>
         <div class="line first"></div>
         <img src="../img/title.png" class='title' alt="">
         <div class="line second"></div>
         <div class='rightBtn'>
-            <div class='btnBox admin'> 
+            <div class='btnBox admin navManger'> 
                 <div class='arrowLeft'></div>
                 <div class='dropDown'>
                     <span>管理菜单<i></i></span>
@@ -41,7 +76,7 @@
                 </div>
                 <div class='arrowRight'></div>
             </div>
-            <div class='btnBox admin'> 
+            <div class='btnBox admin systemManger'> 
                 <div class='arrowLeft'></div>
                 <div class='dropDown'>
                         <span>系统管理员<i></i></span>
@@ -65,36 +100,62 @@
         </div>
     </header>
     <div class='content'>
+        <!-- 左侧内容 -->
         <div class='leftCon'>
+            <!-- 地图 -->
             <div id='allmap'></div>
+            <!-- 底部地图标注 -->
             <div class="bottomTip">
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/jgqy.png" alt="">
                     监管企业
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/zdwx.png" alt="">
                     重大危险源
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/zdwz.png" alt="">
                     重大危险源预警
                 </div>
-                <div>
-                    <img src="" alt="">
+                <div class='tipsBox'>
+                    <img src="../img/sgbj.png" alt="">
                     事故报警
                 </div>
             </div>
+            <!-- 左侧状态数量 -->
+            <div class='statuNum'>
+                <div class="statuBox safe">
+                    <p>监管企业</p>
+                    <span>1014</span>
+                </div>
+                <div class="statuBox danger">
+                    <p>危险源</p>
+                    <span>6510</span>
+                </div>
+                <div class="statuBox danger">
+                    <p>隐患数</p>
+                    <span>6510</span>
+                </div>
+                <div class="statuBox safe">
+                    <p>已整改</p>
+                    <span>6510</span>
+                </div>
+            </div>
         </div>
+        <!-- 右侧内容 -->
         <div class="rightCon">
+            <!-- 折线图 -->
             <div class='box'>
                 <div class='boxTitle'></div>
                 <div class='echartBox' id='dangersReported'></div>
             </div>
+            <!-- 柱状图 -->
             <div class='box equipmentNum'>
                 <div class='boxTitle'></div>
                 <div class='echartBox' id='equipmentNum'></div>
             </div>
+            <!-- 重大危险源预警 -->
             <div class='box warning'>
                 <div class='boxTitle'>
                     <span>重大危险源预警</span>
@@ -104,51 +165,285 @@
                         <a href="javascript:void(0)" class='error'>报警（0）</a>
                     </div>
                 </div>
-                <table>
-                    <col width='15%' />
-                    <col width='85%' />
-                  <thead>
-                    <th>监测值</th>
-                    <th>检测点</th>
-                  </thead>
-                  <tbody>   
-                      <tr class='error'>
-                          <td>-1.57</td>
-                          <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                      </tr>
-                      <tr class='warn'>
-                            <td>50</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                        <tr class='error'>
-                            <td>0</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                        <tr class='error'>
-                            <td>-1.57</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                        <tr class='warn'>
-                            <td>-1.57</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                        <tr class='error'>
-                            <td>-1.57</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                        <tr class='error'>
-                            <td>-1.57</td>
-                            <td>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</td>
-                        </tr>
-                  </tbody>
-                </table>
+                <div class='warnList'>
+                    <div class='listHead'>
+                        <p>监测值</p>
+                        <p>检测点</p>
+                    </div>
+                   
+                        <ul>
+                            <li class='error'>
+                                
+                                        <span>-1.57</span>
+                                        <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                                
+                            </li>
+                            <li class='warn'>
+                                <span>50</span>
+                                    <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                               
+                            </li>
+                            <li class='warn'>
+                                <span>50</span>
+                                    <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                            </li>
+                            <li class='error'>
+                                <span>50</span>
+                                    <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                            </li>
+                            <li class='error'>
+                                <span>50</span>
+                                    <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                            </li>
+                            <li class='error'>
+                                    <span>50</span>
+                                        <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                                </li>
+                                <li class='error'>
+                                    <span>50</span>
+                                        <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                                </li>
+                                <li class='error'>
+                                        <span>50</span>
+                                            <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                                    </li>
+                                    <li class='error'>
+                                        <span>50</span>
+                                            <a href=''>安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警安一科技丙烯晴罐区（位号：A0102A）丙烯晴可燃气体泄漏超限报警</a>
+                                    </li>
+                        </ul>
+                     
+
+                </div>
             </div>
         </div>
     </div>
+    <div class='mapTipBox'>
+        <div class='mapCon blueCon'>
+            <div class='mapConTxt'>
+                <p class='titleBox'>
+                       <span class='tips'>危化品监管</span> 
+                </p>
+                <p class='companyName'>
+                    江苏安一信息科技有限公司江苏安一信息科技有限公司
+                </p>
+                <p class='info'>
+                    <span>主要负责人： 王小五</span>
+                    <span>联系电话：15812349876</span>
+                </p>
+                <ul class='infoBtn'>
+                    <li>
+                        人员出入信息
+                    </li>
+                    <li>
+                        <img src="../img/dangerArraw.png" alt="">危化品信息
+                    </li>
+                    <li>
+                            危险源
+                    </li>
+                    <li>
+                            隐患排查
+                    </li>
+            </div>
+            <div class='mapConBottom'></div>
+        </div>
+    </div>
+    <div class='infoAlertBox dangerousInfo'>
+        <div class="title">
+            危化品信息
+        </div>
+        <table>
+            <col width='10%'/>
+            <col width='18%'/>
+            <col width='18%'/>
+            <col width='18%'/>
+            <col width='18%'/>
+            <col width='18%'/>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>危化品名称</th>
+                    <th>用途（类别）</th>
+                    <th>储存方式</th>
+                    <th>储存地点</th>
+                    <th>是否重点监管 危化品</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>1</td>
+                    <td>丁二烯</td>
+                    <td>原料</td>
+                    <td>储罐存储</td>
+                    <td>丁二烯储罐</td>
+                    <td>是</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>丁二烯</td>
+                        <td>原料</td>
+                        <td>储罐存储</td>
+                        <td>丁二烯储罐</td>
+                        <td>是</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>丁二烯</td>
+                        <td>原料</td>
+                        <td>储罐存储</td>
+                        <td>丁二烯储罐</td>
+                        <td>是</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>丁二烯</td>
+                        <td>原料</td>
+                        <td>储罐存储</td>
+                        <td>丁二烯储罐</td>
+                        <td>是</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>丁二烯</td>
+                        <td>原料</td>
+                        <td>储罐存储</td>
+                        <td>丁二烯储罐</td>
+                        <td>是</td>
+                    </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <div class='infoAlertBox hazardSource'>
+        <div class="title">
+            危化品信息
+        </div>
+        <table>
+            <col width='20%'/>
+            <col width='40%'/>
+            <col width='40%'/>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>危险源名称</th>
+                    <th>负责人</th>
+                    </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>111</td>
+                    <td>111s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class='infoAlertBox entryExit'>
+        <div class="title">
+            人员出入信息
+        </div>
+        <table>
+            <col width='50%'/>
+            <col width='50%'/>
+            <tr>
+            <th>部门</th>
+            <th>人员数量</th>
+            </tr>
+            <tr>
+            <td>访客</td>
+            <td>1</td>
+            </tr>
+            <tr>
+            <td>临时承包商</td>
+            <td>15</td>
+            </tr>
+            <tr>
+            <td>Novacap</td>
+            <td>1</td>
+            </tr>
+            <tr>
+                <td>承包商</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>制造商</td>
+                <td>30</td>
+            </tr>
+        </table>
+    </div>
+   <div class='redTipsBox'>
+    <div class='redTipsBottom'>
+        <div class='mapCon yellowCon'>
+            <div class="mapConTxt">
+                <p class="titleBox">
+                    车间北侧仓库发生火灾
+                </p>
+                <p class='info'>
+                    <span>上报时间：  2018-08-15  13:39</span>
+                    <span>事故单位：江苏安一信息科技有限公司</span>
+                </p>
+                <p>
+                    <img src="../img/hz.jpg" class='hzt' alt="">
+                </p>
+                <ul class='infoBtn'>
+                    <li>
+                        平面图
+                    </li>
+                    <li>
+                            消防疏散路线
+                    </li>
+                    <li>
+                            综合应急预案
+                    </li>
+                    <li>
+                            专项应急预案
+                    </li>
+                    <li>
+                            现场处置方案
+                    </li>
+                    <li>
+                            应急小组及物资
+                    </li>
+                    </ul>
+                </div>
+                <div class="mapConBottom"></div>
+            </div>
+        </div>
+    </div>
+   </div>
+   <div class='mapTipBox'>
+    <div class='mapCon yellowCon'>
+        <div class='mapConTxt'>
+            <p class='titleBox'>
+                <img src="../img/warn.png" alt=""><span class='tips'>${result[i].info.tips}</span> 
+            </p>
+            <p class='companyName'>
+                ${result[i].info.companyName}
+            </p>
+            <div class='yellowInfo'>
+                <div>
+                    监测区域：<span>${result[i].info.area}</span>
+                </div>
+               <div>
+                    检  测  项： <span>${result[i].info.item}</span>
+               </div>
+               <div>
+                    监测介质： <span>${result[i].info.monitoringMedium}</span>
+               </div>
+               <div>
+                    检  测  值： <span>${result[i].info.detectionValue}</span>
+               </div>
+            </div>
+        <div class='mapConBottom'></div>
+    </div>
+    </div>
+    
     <script src='../js/jquery-3.3.1.min.js'></script>
     <script src='../js/echarts-all.js'></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MtnvT2vHxyjXd846i1nOjyzl8eMHLqEi"></script>
-    <script type="text/javascript" src="http://developer.baidu.com/map/custom/stylelist.js"></script>
+    <script type="text/javascript" src="../js/styleList.js"></script>
+    <script type="text/javascript" src="../js/sj.js"></script>
+    <script type="text/javascript" src="../js/InfoBox_min.js"></script>
+    <script type="text/javascript" src="../js/layer/layer.js"></script>
     <script src='../js/index.js'></script>
 </body>
 </html>
