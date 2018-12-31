@@ -46,6 +46,7 @@ $(document).ready(function(){
    
     // 定义最后一个弹框
     window.lastInfoBox = null;
+
        $.ajax({
         url: '../js/sj.json',
         method: 'get',
@@ -84,17 +85,22 @@ $(document).ready(function(){
                 var troubleIdentify='<div class=\\"infoAlertBox entryExit\\"><div class=\\"title\\">隐患排查</div> <table><col width=\\"50%\\"/><col width=\\"50%\\"/><tr><th>隐患</th><th>数量</th></tr><tr><td>排查数</td><td>'+result[i].troubleIdentify.pcs+'</td> </tr><tr><td>隐患数</td><td>'+result[i].troubleIdentify.yhs+'</td> </tr> <tr><td>已整改</td><td>'+result[i].troubleIdentify.yzg+'</td></tr> <tr><td>待整改</td><td>'+result[i].troubleIdentify.dzg+'</td></tr><tr><td>整改率</td><td>'+result[i].troubleIdentify.zgl+'%</td></tr> </table></div>';
 
                 // 危化品信息
-                // var dangerousInfo = '<div class=\\"infoAlertBox dangerousInfo\\"><div class=\\"title\\">危化品信息</div><table><col width=\\"10%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><thead><tr><th>序号</th><th>危化品名称</th><th>用途（类别）</th><th>储存方式</th><th>储存地点</th><th>是否重点监管危化品</th></tr></thead><tbody></tbody></table></div>'
-               
+                var item='';
+                 $.each(result[i].dangerousInfo, function (j) {
+                    item += '<tr><td>' + j + '</td><td>' + result[i].dangerousInfo[j].whpname + '</td><td>' + result[i].dangerousInfo[j].yt + '</td><td>' + result[i].dangerousInfo[j].ccfs + '</td><td>' + result[i].dangerousInfo[j].ccdd + '</td><td>' + result[i].dangerousInfo[j].sfzdjgwhp + '</td></tr>';
+               });
+             
+               var dangerousInfoHtml='<div class=\\"infoAlertBox dangerousInfo\\"><div class=\\"title\\">危化品信息</div><table><col width=\\"10%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><thead><tr><th>序号</th><th>危化品名称</th><th>用途（类别）</th><th>储存方式</th><th>储存地点</th><th>是否重点监管危化品</th></tr></thead><tbody>'+item+'</tbody></table></div>';
 
-                function aaa(){
-                    $.each(result[i].dangerousInfo,function(j){  
-                        var  item = '<tr><td>'+j+'</td><td>'+result[i].dangerousInfo[j].whpname+'</td><td>'+result[i].dangerousInfo[j].yt+'</td><td>'+result[i].dangerousInfo[j].ccfs+'</td><td>'+result[i].dangerousInfo[j].ccdd+'</td><td>'+result[i].dangerousInfo[j].sfzdjgwhp+'</td></tr>';  
-                         $('.dangerousInfo tbody').append(item);  
-                     });  
-                }
+                // 危险源
+                var item2='';
+                 $.each(result[i].hazardSource, function (j) {
+                    item2 += '<tr><td>' + j + '</td><td>' + result[i].hazardSource[j].hazardSourcename + '</td><td>' + result[i].hazardSource[j].chargename + '</td></tr>';
+               });
+               var hazardSourceHtml='<div class=\\"infoAlertBox hazardSource\\"><div class=\\"title\\">危险源</div><table><col width=\\"20%\\"/><col width=\\"40%\\"/><col width=\\"40%\\"/><thead><tr><th>序号</th><th>危险源名称</th><th>负责人</th></tr></thead><tbody>'+item2+'</tbody></table></div>';
 
-                aaa();
+
+
                 var str =`
                         <div class='mapTipBox'>
                             <div class='mapCon blueCon'>
@@ -113,10 +119,10 @@ $(document).ready(function(){
                                     <li class='entryExitInfo' onclick='alertInfo(\"${entryExitInfo}\")' >
                                             人员出入信息 
                                         </li>
-                                        <li onclick='alertInfo($(".dangerousInfo"))'  >
+                                        <li onclick='alertInfo(\"${dangerousInfoHtml}\")'>
                                                 <img src="../img/dangerArraw.png" alt="">危化品信息
                                         </li>
-                                        <li class='hazardSource' onclick="hazardSource()">
+                                        <li onclick='alertInfo(\"${hazardSourceHtml}\")'>
                                                 危险源
                                         </li>
                                         
@@ -128,6 +134,30 @@ $(document).ready(function(){
                             </div>
                         </div>
                         ` 
+                // var str ="<div class='mapTipBox'>"+
+                // "<div class='mapCon blueCon'>"+
+                // "<div class='mapConTxt'>"+
+                // "<p class='titleBox'>"+
+                // "<span class='tips'>${result[i].info.tips}</span> "+
+                // "</p>"+
+                // "<p class='companyName'>"+
+                // result[i].info.companyName+
+                //             "</p>"+
+                //             "<p class='info'>"+
+                //             " <span>主要负责人：${result[i].info.headName}</span>"+
+                //             "<span>联系电话：${result[i].info.phone}</span>"+
+                //             " </p>"+
+                //             "<ul class='infoBtn'>"+
+                //             "<li class='entryExitInfo' onclick='alertInfo(entryExitInfo)' >人员出入信息 </li>"+
+                //                     " <li onclick='alertInfo("+dangerousInfoHtml.html()+")'  >"+
+                //                     " <img src='../img/dangerArraw.png' alt=''>危化品信息</li>"+
+                //                " <li class='hazardSource' onclick='hazardSource()'></li>"+
+                //                 "<li onclick='alertInfo(troubleIdentify)'>隐患排查</li>"+
+                //                         "</div>"+
+                //                         "<div class='mapConBottom'></div>"+
+                //                         " </div>"+
+                //                         " </div>"
+                
                          var data_info = data;
                         for(var i = 0; i < data_info.length; i++) {
                             var marker = new BMap.Marker(new BMap.Point(data_info[i][0], data_info[i][1]),{icon:myIcon}); // 创建标注
@@ -241,6 +271,7 @@ $(document).ready(function(){
                 var opts = {
                     boxStyle:{
                         width: "252px"
+                     
                     }
                     ,offset: new BMap.Size(20, 45)
                     ,enableAutoPan: true
@@ -250,15 +281,17 @@ $(document).ready(function(){
                         ,closeIconZIndex:9999
                        ,closeIconWidth:'10px'
                     };
+                   
                 var myIcon = new BMap.Icon("../img/zdwz.gif", new BMap.Size(45,43));
                 var data1 = new Array();
                 data1[0] = result[i].info.longitude;
                 data1[1] = result[i].info.latitude;
                 data1[3] = myIcon;
                 data1[4] = opts;
-            map.centerAndZoom(new BMap.Point(result[i].info.longitude, result[i].info.latitude), 12);
-            map.enableScrollWheelZoom(true);
-            var str =`
+                map.centerAndZoom(new BMap.Point(result[i].info.longitude, result[i].info.latitude), 12);
+                map.enableScrollWheelZoom(true);
+                
+                 var str =`
                    <div class='mapTipBox'>
                         <div class='mapCon yellowCon'>
                             <div class='mapConTxt'>
@@ -300,7 +333,7 @@ $(document).ready(function(){
                 map.addOverlay(marker); // 将标注添加到地图中
                 addClickHandler(content, marker,opts);
             }
-           
+                  
             function addClickHandler(content, marker,opts) {
                 marker.addEventListener("click", function(e) {
                 openInfo(content, e,opts)
@@ -338,15 +371,11 @@ $(document).ready(function(){
             renderOptions:{map: map} 
         }); 
         local.search(result); 
-        console.log(result);
      } 
 
 })
 
-
-
 function alertInfo(infoAlertBox){
-    // alert(infoAlertBox)
     layer.open({
         type: 1,
         area:['auto','auto'],
@@ -356,7 +385,6 @@ function alertInfo(infoAlertBox){
         content: infoAlertBox, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素
       });
 }
-
 
 function dangersReport(){
     // 上报隐患数
