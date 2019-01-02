@@ -1,11 +1,8 @@
-@font-face {
-    font-family:'title';
-    src: url(../fonts/title.ttf);
-}
 
 @font-face {
     font-family:'zzgf';
-    src: url(../fonts/BW7pGeneralNarrow.otf);
+    src: url(../fonts/BW7pGeneralNarrow.otf),
+         url('../fonts/BW7pGeneralNarrow.woff') format('woff')
 }
 
 body{

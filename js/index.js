@@ -51,7 +51,7 @@ $(document).ready(function(){
         url: '../js/sj.json',
         method: 'get',
         dataType: 'json',
-        success(result){
+        success:function(result){
             // 向地图添加标注
             var data = new Array();
             for(var i = 0; i < result.length; i++) {
@@ -79,84 +79,47 @@ $(document).ready(function(){
                 map.enableScrollWheelZoom(true);
 
                 // 人员出入信息
-                var entryExitInfo='<div class=\\"infoAlertBox entryExit\\"><div class=\\"title\\">人员出入信息</div> <table><col width=\\"50%\\"/><col width=\\"50%\\"/><tr><th>部门</th><th>人员数量</th></tr><tr><td>访客</td><td>'+result[i].entryExitInfo.fk+'</td> </tr><tr><td>临时承包商</td><td>'+result[i].entryExitInfo.lscbs+'</td> </tr> <tr><td>Novacap</td><td>1</td></tr> <tr><td>承包商</td><td>'+result[i].entryExitInfo.cbs+'</td></tr> <tr><td>制造商</td><td>'+result[i].entryExitInfo.zzs+'</td></tr> </table></div>';
+                var entryExitInfo = "<div class=\\'infoAlertBox entryExit\\'><div class=\\'title\\'>人员出入信息</div> <table><col width=\\'50%\\'/><col width=\\'50%\\'/><tr><th>部门</th><th>人员数量</th></tr><tr><td>访客</td><td>" + result[i].entryExitInfo.fk + "</td> </tr><tr><td>临时承包商</td><td>" + result[i].entryExitInfo.lscbs + "</td> </tr> <tr><td>Novacap</td><td>1</td></tr> <tr><td>承包商</td><td>" + result[i].entryExitInfo.cbs + "</td></tr> <tr><td>制造商</td><td>" + result[i].entryExitInfo.zzs + "</td></tr> </table></div>";
 
                 // 隐患排查
-                var troubleIdentify='<div class=\\"infoAlertBox entryExit\\"><div class=\\"title\\">隐患排查</div> <table><col width=\\"50%\\"/><col width=\\"50%\\"/><tr><th>隐患</th><th>数量</th></tr><tr><td>排查数</td><td>'+result[i].troubleIdentify.pcs+'</td> </tr><tr><td>隐患数</td><td>'+result[i].troubleIdentify.yhs+'</td> </tr> <tr><td>已整改</td><td>'+result[i].troubleIdentify.yzg+'</td></tr> <tr><td>待整改</td><td>'+result[i].troubleIdentify.dzg+'</td></tr><tr><td>整改率</td><td>'+result[i].troubleIdentify.zgl+'%</td></tr> </table></div>';
+                var troubleIdentify = "<div class=\\'infoAlertBox entryExit\\'><div class=\\'title\\'>隐患排查</div> <table><col width=\\'50%\\'/><col width=\\'50%\\'/><tr><th>隐患</th><th>数量</th></tr><tr><td>排查数</td><td>" + result[i].troubleIdentify.pcs + "</td> </tr><tr><td>隐患数</td><td>" + result[i].troubleIdentify.yhs + "</td> </tr> <tr><td>已整改</td><td>" + result[i].troubleIdentify.yzg + "</td></tr> <tr><td>待整改</td><td>" + result[i].troubleIdentify.dzg + "</td></tr><tr><td>整改率</td><td>" + result[i].troubleIdentify.zgl + "%</td></tr> </table></div>";
 
-                // 危化品信息
-                var item='';
-                 $.each(result[i].dangerousInfo, function (j) {
-                    item += '<tr><td>' + j + '</td><td>' + result[i].dangerousInfo[j].whpname + '</td><td>' + result[i].dangerousInfo[j].yt + '</td><td>' + result[i].dangerousInfo[j].ccfs + '</td><td>' + result[i].dangerousInfo[j].ccdd + '</td><td>' + result[i].dangerousInfo[j].sfzdjgwhp + '</td></tr>';
+               // 危化品信息
+               var item = '';
+               $.each(result[i].dangerousInfo, function (j) {
+                   item += '<tr><td>' + j + '</td><td>' + result[i].dangerousInfo[j].whpname + '</td><td>' + result[i].dangerousInfo[j].yt + '</td><td>' + result[i].dangerousInfo[j].ccfs + '</td><td>' + result[i].dangerousInfo[j].ccdd + '</td><td>' + result[i].dangerousInfo[j].sfzdjgwhp + '</td></tr>';
                });
              
-               var dangerousInfoHtml='<div class=\\"infoAlertBox dangerousInfo\\"><div class=\\"title\\">危化品信息</div><table><col width=\\"10%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><col width=\\"18%\\"/><thead><tr><th>序号</th><th>危化品名称</th><th>用途（类别）</th><th>储存方式</th><th>储存地点</th><th>是否重点监管危化品</th></tr></thead><tbody>'+item+'</tbody></table></div>';
+               var dangerousInfoHtml = "<div class=\\'infoAlertBox dangerousInfo\\'><div class=\\'title\\'>危化品信息</div><table><col width=\\'10%\\'/><col width=\\'18%\\'/><col width=\\'18%\\'/><col width=\\'18%\\'/><col width=\\'18%\\'/><col width=\\'18%\\'/><thead><tr><th>序号</th><th>危化品名称</th><th>用途（类别）</th><th>储存方式</th><th>储存地点</th><th>是否重点监管危化品</th></tr></thead><tbody>" + item + "</tbody></table></div>";
 
-                // 危险源
-                var item2='';
-                 $.each(result[i].hazardSource, function (j) {
-                    item2 += '<tr><td>' + j + '</td><td>' + result[i].hazardSource[j].hazardSourcename + '</td><td>' + result[i].hazardSource[j].chargename + '</td></tr>';
+               // 危险源
+               var item2 = '';
+               $.each(result[i].hazardSource, function (j) {
+                   item2 += '<tr><td>' + j + '</td><td>' + result[i].hazardSource[j].hazardSourcename + '</td><td>' + result[i].hazardSource[j].chargename + '</td></tr>';
                });
-               var hazardSourceHtml='<div class=\\"infoAlertBox hazardSource\\"><div class=\\"title\\">危险源</div><table><col width=\\"20%\\"/><col width=\\"40%\\"/><col width=\\"40%\\"/><thead><tr><th>序号</th><th>危险源名称</th><th>负责人</th></tr></thead><tbody>'+item2+'</tbody></table></div>';
+               var hazardSourceHtml = "<div class=\\'infoAlertBox hazardSource\\'><div class=\\'title\\'>危险源</div><table><col width=\\'20%\\'/><col width=\\'40%\\'/><col width=\\'40%\\'/><thead><tr><th>序号</th><th>危险源名称</th><th>负责人</th></tr></thead><tbody>" + item2 + "</tbody></table></div>";
 
-
-
-                var str =`
-                        <div class='mapTipBox'>
-                            <div class='mapCon blueCon'>
-                                <div class='mapConTxt'>
-                                    <p class='titleBox'>
-                                        <span class='tips'>${result[i].info.tips}</span> 
-                                    </p>
-                                    <p class='companyName'>
-                                    ${result[i].info.companyName}
-                                    </p>
-                                    <p class='info'>
-                                        <span>主要负责人：${result[i].info.headName}</span>
-                                        <span>联系电话：${result[i].info.phone}</span>
-                                    </p>
-                                    <ul class='infoBtn'>
-                                    <li class='entryExitInfo' onclick='alertInfo(\"${entryExitInfo}\")' >
-                                            人员出入信息 
-                                        </li>
-                                        <li onclick='alertInfo(\"${dangerousInfoHtml}\")'>
-                                                <img src="../img/dangerArraw.png" alt="">危化品信息
-                                        </li>
-                                        <li onclick='alertInfo(\"${hazardSourceHtml}\")'>
-                                                危险源
-                                        </li>
-                                        
-                                        <li onclick='alertInfo(\"${troubleIdentify}\")'>
-                                                隐患排查
-                                        </li>
-                                </div>
-                                <div class='mapConBottom'></div>
-                            </div>
-                        </div>
-                        ` 
-                // var str ="<div class='mapTipBox'>"+
-                // "<div class='mapCon blueCon'>"+
-                // "<div class='mapConTxt'>"+
-                // "<p class='titleBox'>"+
-                // "<span class='tips'>${result[i].info.tips}</span> "+
-                // "</p>"+
-                // "<p class='companyName'>"+
-                // result[i].info.companyName+
-                //             "</p>"+
-                //             "<p class='info'>"+
-                //             " <span>主要负责人：${result[i].info.headName}</span>"+
-                //             "<span>联系电话：${result[i].info.phone}</span>"+
-                //             " </p>"+
-                //             "<ul class='infoBtn'>"+
-                //             "<li class='entryExitInfo' onclick='alertInfo(entryExitInfo)' >人员出入信息 </li>"+
-                //                     " <li onclick='alertInfo("+dangerousInfoHtml.html()+")'  >"+
-                //                     " <img src='../img/dangerArraw.png' alt=''>危化品信息</li>"+
-                //                " <li class='hazardSource' onclick='hazardSource()'></li>"+
-                //                 "<li onclick='alertInfo(troubleIdentify)'>隐患排查</li>"+
-                //                         "</div>"+
-                //                         "<div class='mapConBottom'></div>"+
-                //                         " </div>"+
-                //                         " </div>"
+               var str ='<div class="mapTipBox">'+
+               '<div class="mapCon blueCon">'+
+                  '<div class="mapConTxt">'+
+                  '<p class="titleBox">'+
+                  '<span class="tips">'+result[i].info.tips+'</span>'+
+                  '</p>'+
+                  '<p class="companyName">'+result[i].info.companyName+'</p>'+
+                       '<p class="info">'+
+                       '<span>主要负责人：'+result[i].info.headName+'</span>'+
+                       '<span>联系电话：'+result[i].info.phone+'</span>'+
+                       '</p>'+
+                       '<ul class="infoBtn">'+
+                       '<li onclick="alertInfo(\''+entryExitInfo+'\')" >人员出入信息 </li>'+
+                       '<li onclick="alertInfo(\''+dangerousInfoHtml+'\')">'+
+                       '<img src="../img/dangerArraw.png" alt="">危化品信息</li>'+
+                       '<li onclick="alertInfo(\''+hazardSourceHtml+'\')"> 危险源</li>'+
+                       '<li onclick="alertInfo(\''+troubleIdentify+'\')">隐患排查</li>'+
+                       '</div>'+
+                       '<div class="mapConBottom"></div>'+
+                       '</div>'+
+                       '</div>'
                 
                          var data_info = data;
                         for(var i = 0; i < data_info.length; i++) {
@@ -187,33 +150,26 @@ $(document).ready(function(){
                     data1[4] = opts;
                 map.centerAndZoom(new BMap.Point(result[i].info.longitude, result[i].info.latitude), 12);
                 map.enableScrollWheelZoom(true);
-                var str =`
-                       <div class='mapTipBox'>
-                            <div class='mapCon yellowCon'>
-                                <div class='mapConTxt'>
-                                    <p class='titleBox'>
-                                           <span class='tips'>${result[i].info.tips}</span> 
-                                    </p>
-                                    <p class='companyName'>
-                                        ${result[i].info.companyName}
-                                    </p>
-                                    <div class='yellowInfo'>
-                                        <div>
-                                            监测区域：<span>${result[i].info.area}</span>
-                                        </div>
-                                       <div>
-                                            检  测  项： <span>${result[i].info.item}</span>
-                                       </div>
-                                       <div>
-                                            监测介质： <span>${result[i].info.monitoringMedium}</span>
-                                       </div>
-                                       <div>
-                                            检  测  值： <span>${result[i].info.detectionValue}</span>
-                                       </div>
-                                    </div>
-                                <div class='mapConBottom'></div>
-                            </div>
-                            </div>` 
+                var str = "<div class='mapTipBox'>"+
+                "<div class='mapCon yellowCon'>"+
+                "<div class='mapConTxt'>"+
+                "<p class='titleBox'>"+
+                "<span class='tips'>"+result[i].info.tips+"</span>"+
+                "</p>"+
+                " <p class='companyName'>"+
+                        result[i].info.companyName+
+                            "</p>"+
+                            "<div class='yellowInfo'>"+
+                            "<div>监测区域：<span>"+result[i].info.area+"</span></div>"+
+                                "<div>检  测  项： <span>"+result[i].info.item+"</span></div>"+
+                                "<div>监测介质： <span>"+result[i].info.monitoringMedium+"</span>"+
+                                " </div>"+
+                                " <div>检  测  值： <span>"+result[i].info.detectionValue+"</span>"+
+                                " </div>"+
+                                " </div>"+
+                                " <div class='mapConBottom'></div>"+
+                                " </div>"+
+                                "</div>"
                     break;
                 case 2:
                 var opts = {
@@ -236,35 +192,32 @@ $(document).ready(function(){
                 data1[4] = opts;
             map.centerAndZoom(new BMap.Point(result[i].info.longitude, result[i].info.latitude), 12);
             map.enableScrollWheelZoom(true);
-            var str =`
-            <div class='redTipsBox'>
-            <div class='redTipsBottom'>
-                <div class='mapCon yellowCon'>
-                    <div class="mapConTxt">
-                        <p class="titleBox">
-                            ${result[i].info.note}
-                        </p>
-                        <p class='info'>
-                            <span>上报时间：${result[i].info.time}</span>
-                            <span>事故单位：${result[i].info.companyName}</span>
-                        </p>
-                        <p>
-                            <img src="${result[i].info.imgUrl}" class='hzt' alt="">
-                        </p>
-                        <ul class='infoBtn'>
-                            <li><a href=''>平面图</a></li>
-                            <li><a href=''>消防疏散路线</a></li>
-                            <li><a href=''>综合应急预案</a></li>
-                            <li><a href=''>专项应急预案</a></li>
-                            <li><a href=''>现场处置方案</a></li>
-                            <li><a href=''>应急小组及物资</a></li>
-                        </ul>
-                        </div>
-                        <div class="mapConBottom"></div>
-                    </div>
-                </div>
-            </div>
-           </div>` 
+            var str ="<div class='redTipsBox'>"+
+            "<div class='redTipsBottom'>"+
+            "<div class='mapCon yellowCon'>"+
+            "<div class='mapConTxt'>"+
+            "<p class='titleBox'>"+result[i].info.note+"</p>"+
+            "<p class='info'>"+
+            " <span>上报时间："+result[i].info.time+"</span>"+
+            "<span>事故单位："+result[i].info.companyName+"</span>"+
+            "</p>"+
+            " <p>"+
+            "<img src="+result[i].info.imgUrl+" class='hzt' alt=''>"+
+            "</p>"+
+            "<ul class='infoBtn'>"+
+            "<li><a href=''>平面图</a></li>"+
+            "<li><a href=''>消防疏散路线</a></li>"+
+            "<li><a href=''>综合应急预案</a></li>"+
+            "<li><a href=''>专项应急预案</a></li>"+
+            "<li><a href=''>现场处置方案</a></li>"+
+            "<li><a href=''>应急小组及物资</a></li>"+
+            "</ul>"+
+            "</div>"+
+            "<div class='mapConBottom'></div>"+
+            "</div>"+
+            "</div>"+
+            "</div>"+
+            "</div>"
                     break;
 
                 case 3:
@@ -291,33 +244,26 @@ $(document).ready(function(){
                 map.centerAndZoom(new BMap.Point(result[i].info.longitude, result[i].info.latitude), 12);
                 map.enableScrollWheelZoom(true);
                 
-                 var str =`
-                   <div class='mapTipBox'>
-                        <div class='mapCon yellowCon'>
-                            <div class='mapConTxt'>
-                                <p class='titleBox'>
-                                <img src="../img/warn.png" alt=""><span class='tips'>${result[i].info.tips}</span> 
-                                </p>
-                                <p class='companyName'>
-                                    ${result[i].info.companyName}
-                                </p>
-                                <div class='yellowInfo'>
-                                    <div>
-                                        监测区域：<span>${result[i].info.area}</span>
-                                    </div>
-                                   <div>
-                                        检  测  项： <span>${result[i].info.item}</span>
-                                   </div>
-                                   <div>
-                                        监测介质： <span>${result[i].info.monitoringMedium}</span>
-                                   </div>
-                                   <div>
-                                        检  测  值： <span>${result[i].info.detectionValue}</span>
-                                   </div>
-                                </div>
-                            <div class='mapConBottom'></div>
-                        </div>
-                        </div>` 
+                 var str ="<div class='mapTipBox'>"+
+                 "<div class='mapCon yellowCon'>"+
+                 "<div class='mapConTxt'>"+
+                 "<p class='titleBox'>"+
+                 "<img src='../img/warn.png' alt=''><span class='tips'>"+result[i].info.tips+"</span>"+ 
+                 "</p>"+
+                 " <p class='companyName'>"+result[i].info.companyName+"</p>"+
+                 "<div class='yellowInfo'>"+
+                 "<div>监测区域：<span>"+result[i].info.area+"</span>"+
+                 " </div>"+
+                 "<div>检  测  项： <span>"+result[i].info.item+"</span>"+
+                 "</div>"+
+                 " <div>监测介质： <span>"+result[i].info.monitoringMedium+"</span>"+
+                 "</div>"+
+                 "<div>检  测  值： <span>"+result[i].info.detectionValue+"</span>"+
+                 "</div>"+
+                "</div>"+
+                  "<div class='mapConBottom'></div>"+
+                    "</div>"+
+                    "</div>"
                 break;
                  default:
                     break;
@@ -354,9 +300,6 @@ $(document).ready(function(){
             infoWindow.open(point);
         
             }
-
-        },
-        error(){
 
         }
     })
