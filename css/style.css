@@ -7,9 +7,11 @@
 
 body{
     background: #00070f;
-    padding: 0 1% 1% !important;
+    padding: 0 1%  !important;
     font-family: '黑体';
     font-size: 14px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 a:hover,a:link,a:active{
@@ -166,14 +168,15 @@ header form .inputTxt::placeholder{
 
 .content{
     display: flex;
-    margin-top: 2%;
+    margin-top: 30px;
 }
 
 .rightCon .box{
     border:1px solid #3b71a6;
     background: #0a152e;
     position:relative;
-    height:230px;
+    box-sizing: border-box;
+    /* height:230px; */
 }
 
 .rightCon .box .boxTitle{
@@ -207,7 +210,7 @@ header form .inputTxt::placeholder{
 
 .echartBox{
     width:100%;
-    height:200px;
+    /* height:200px; */
     background:transparent;
 }
 
@@ -218,6 +221,9 @@ header form .inputTxt::placeholder{
 
 .warning.box{
     height: auto;
+    overflow: hidden;
+    /* padding-bottom: 5px; */
+    box-sizing: border-box
 }
 
 .warning .boxTitle{
@@ -281,8 +287,6 @@ header form .inputTxt::placeholder{
 }
 
 .warnList ul{
-    max-height:240px;
-    min-height:240px;
     overflow-y: auto;
 }
 
