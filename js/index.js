@@ -3,12 +3,12 @@ $(document).ready(function(){
     dangersReport();
     equipmentNum();
 
-    var wh = $(window).height();
-    var hh = $('header').height();
-    $(".content").height(wh-hh-30);
-    $('.rightCon .box').height(($(".content").height()-36)/3)
-    $(".echartBox").height($('.rightCon .box').height()-30)
-    $(".warnList ul").css({"max-height":$('.rightCon .box').height()-70,"min-height":$('.rightCon .box').height()-70})
+    allShow();
+    $(window).resize(function() {
+        allShow();
+      });
+
+   
 
     //重大危险源预警按钮
     $(".warningBtn .warn").click(function(){
@@ -333,6 +333,15 @@ function alertInfo(infoAlertBox){
         title: false, //不显示标题
         content: infoAlertBox, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素
       });
+}
+
+function allShow(){
+    var wh = $(window).height();
+    var hh = $('header').height();
+    $(".content").height(wh-hh-30);
+    $('.rightCon .box').height(($(".content").height()-36)/3)
+    $(".echartBox").height($('.rightCon .box').height()-30)
+    $(".warnList ul").css({"max-height":$('.rightCon .box').height()-70,"min-height":$('.rightCon .box').height()-70})
 }
 
 function dangersReport(){
